@@ -1,7 +1,7 @@
 import { parseArgs } from 'node:util';
-import { pool } from '../src/db/pool.js';
-import { verifyPassword } from '../src/lib/password.js';
-import { ask } from '../src/lib/prompt.js';
+import { pool } from '../src/db/pool.ts';
+import { verifyPassword } from '../src/lib/password.ts';
+import { ask } from '../src/lib/prompt.ts';
 
 const { values } = parseArgs({ options: { username: { type: 'string' } } });
 try {

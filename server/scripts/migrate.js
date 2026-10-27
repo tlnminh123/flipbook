@@ -1,4 +1,4 @@
-import { migrate, pool } from '../src/db/pool.js';
+import { migrate, pool } from '../src/db/pool.ts';
 
 try {
   await migrate();
