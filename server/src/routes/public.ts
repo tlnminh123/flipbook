@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { Router } from 'express';
-import { findPublishedById, findPublishedBySlug, getSiteSettings, listPublished } from '../repos/publications.js';
+import { findPublishedById, findPublishedBySlug, getSiteSettings, listPublished } from '../repos/publications.ts';
 
 const serverRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const storageRoot = path.join(serverRoot, 'storage', 'publications');

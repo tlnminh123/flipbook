@@ -1,5 +1,5 @@
-import { pool } from '../db/pool.js';
-import { normalizeQuery } from '../lib/searchText.js';
+import { pool } from '../db/pool.ts';
+import { normalizeQuery } from '../lib/searchText.ts';
 
 const collator = new Intl.Collator('vi', { numeric: true, sensitivity: 'base' });
 const columns = `id, slug, title, subtitle, year, description, cover, source_pdf, pdf,
