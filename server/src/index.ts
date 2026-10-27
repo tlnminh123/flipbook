@@ -17,7 +17,8 @@ const webRoot = fs.existsSync(path.join(dist, 'index.html'))
 try {
   await migrate();
 } catch (e) {
-  console.error('Không kết nối/migrate được PostgreSQL:', e.message);
+  const error = e as Error;
+  console.error('Không kết nối/migrate được PostgreSQL:', error.message);
   console.error('Kiểm tra DATABASE_URL trong server/.env và DB đã chạy chưa.');
   process.exit(1);
 }
@@ -32,17 +33,22 @@ app.use((req, res, next) => {
   next();
 });
 
-app.get('/api/health', async (req, res) => {
+app.get('/api/health', async (_req, res) => {
   let db = false;
-  try { await pool.query('SELECT 1'); db = true; } catch { /* db=false */ }
+  try {
+    await pool.query('SELECT 1');
+    db = true;
+  } catch {
+    // db=false
+  }
   res.status(db ? 200 : 503).json({ ok: db, db, webRoot: path.relative(ROOT, webRoot) });
 });
 
 app.use('/api', publicRoutes);
 app.use('/', storageRouter);
 app.use('/assets', express.static(path.join(webRoot, 'assets'), { maxAge: '1d' }));
-app.use('/assets', (req, res) => res.status(404).type('text/plain').send('Not found'));
-app.use('/api', (req, res) => res.status(404).json({ error: 'Not found' }));
+app.use('/assets', (_req, res) => res.status(404).type('text/plain').send('Not found'));
+app.use('/api', (_req, res) => res.status(404).json({ error: 'Not found' }));
 
 app.listen(PORT, () => {
   console.log(`Server: http://localhost:${PORT}  (static: ${path.relative(ROOT, webRoot)})`);

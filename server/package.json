@@ -3,12 +3,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "node --env-file=.env --watch src/index.js",
-    "start": "node --env-file=.env src/index.js",
-    "db:migrate": "node --env-file=.env scripts/migrate.js",
-    "db:import-xml": "node --env-file=.env scripts/import-xml.js",
-    "admin:create": "node --env-file=.env scripts/create-admin.js",
-    "admin:check": "node --env-file=.env scripts/check-password.js"
+    "dev": "node --env-file=.env --import tsx --watch src/index.ts",
+    "start": "node --env-file=.env --import tsx src/index.ts",
+    "typecheck": "tsc --noEmit",
+    "db:migrate": "node --env-file=.env --import tsx scripts/migrate.js",
+    "db:import-xml": "node --env-file=.env --import tsx scripts/import-xml.js",
+    "admin:create": "node --env-file=.env --import tsx scripts/create-admin.js",
+    "admin:check": "node --env-file=.env --import tsx scripts/check-password.js"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
