@@ -1,0 +1,25 @@
+{
+  "name": "server",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node --env-file=.env --watch src/index.js",
+    "start": "node --env-file=.env src/index.js",
+    "db:migrate": "node --env-file=.env scripts/migrate.js",
+    "db:import-xml": "node --env-file=.env scripts/import-xml.js",
+    "admin:create": "node --env-file=.env scripts/create-admin.js",
+    "admin:check": "node --env-file=.env scripts/check-password.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "express": "^4.21.2",
+    "fast-xml-parser": "^4.5.1",
+    "pg": "^8.13.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^26.6.5",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2"
+  }
+}

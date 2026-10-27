@@ -1,0 +1,7 @@
+node_modules/
+dist/
+.env
+# File người dùng upload (PDF, bìa) và dữ liệu: KHÔNG commit.
+# Repo cũ đã lỡ commit storage/ kèm hash mật khẩu, đừng lặp lại.
+server/storage/
+*.log
