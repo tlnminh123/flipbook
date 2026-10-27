@@ -3,8 +3,8 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
 import { XMLParser } from 'fast-xml-parser';
-import { pool, migrate } from '../src/db/pool.js';
-import { buildSearchText } from '../src/lib/searchText.js';
+import { pool, migrate } from '../src/db/pool.ts';
+import { buildSearchText } from '../src/lib/searchText.ts';
 
 const SERVER_DIR = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const { values, positionals } = parseArgs({

@@ -1,8 +1,8 @@
 import { parseArgs } from 'node:util';
 import crypto from 'node:crypto';
-import { pool, migrate } from '../src/db/pool.js';
-import { hashPassword } from '../src/lib/password.js';
-import { ask } from '../src/lib/prompt.js';
+import { pool, migrate } from '../src/db/pool.ts';
+import { hashPassword } from '../src/lib/password.ts';
+import { ask } from '../src/lib/prompt.ts';
 
 const { values } = parseArgs({
   options: {
